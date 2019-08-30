@@ -2,16 +2,20 @@
 
 > A nextjs test repo
 
-1. Put the project to a nodejs environment.
+1. Put the project into a nodejs environment. Check your node version.
 
-2. Configure the components using
-
-```sh
-yarn install
+```shell
+$ node -v
 ```
 
-3. run `sockjs-client`
+2. Install the dependencies.
 
-```sh
-node sockjs-client.js
+```shell
+$ yarn install
+```
+
+3. Run.
+
+```shell
+$ yarn dev
 ```
