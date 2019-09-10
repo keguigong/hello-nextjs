@@ -19,7 +19,7 @@ export default class Father extends React.Component {
                 <h1>{count}</h1>
                 <button onClick={this.handleMinusClick}>-</button>
                 <button onClick={this.handlePlusClick}>+</button>
-                <Child onReset={this.handleChildReset} number="asdasd"/>
+                <Child onReset={this.handleChildReset} number={count}/>
             </Layout>
         )
     }
