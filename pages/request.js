@@ -21,7 +21,12 @@ export default class CorsTest extends React.Component {
     }
 
     makeFetchRequest = () => {
-        fetch(`http://localhost:8000/demoapp`)
+        fetch(`http://127.0.0.1:8000/demoapp`, {
+            method: 'GET',
+            headers: {
+                'My-Heder': '6a9sdnahasw6bnnkout'
+            }
+        })
         .then(res => res.json())
         .then(result => {
             console.log(result)
