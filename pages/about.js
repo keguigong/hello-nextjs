@@ -1,10 +1,10 @@
 import Header from '../components/header'
 
-const Home = () => (
+const About = () => (
   <>
     <Header />
-    <h1>Hello World!</h1>
+    <h1>About page</h1>
   </>
 )
 
-export default Home
+export default About
