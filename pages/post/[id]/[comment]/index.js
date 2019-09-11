@@ -1,30 +1,30 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Header from '../../../../components/header'
+import Layout from '../../../../components/layout'
 
 const Comment = () => {
-  const router = useRouter()
-  const { id, comment } = router.query
+    const router = useRouter()
+    const { id, comment } = router.query
 
-  return (
-    <>
-      <Header />
-      <h1>Post: {id}</h1>
-      <h1>Comment: {comment}</h1>
-      <ul>
-        <li>
-          <Link href='/post/[id]/[comment]/[detail]' as={`/post/${id}/${comment}/detail-first`}>
-            <a>First comment</a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/post/[id]/[comment]/[detail]' as={`/post/${id}/${comment}/detail-second`}>
-            <a>Second comment</a>
-          </Link>
-        </li>
-      </ul>
-    </>
-  )
+    return (
+        <Layout>
+            <Header />
+            <h1>/{id}/{comment}</h1>
+            <ul>
+                <li>
+                    <Link href='/post/[id]/[comment]/[detail]' as={`/post/${id}/${comment}/detail-1`}>
+                        <a>detail-1</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href='/post/[id]/[comment]/[detail]' as={`/post/${id}/${comment}/detail-2`}>
+                        <a>detail-2</a>
+                    </Link>
+                </li>
+            </ul>
+        </Layout>
+    )
 }
 
 export default Comment
