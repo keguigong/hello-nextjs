@@ -1,17 +1,26 @@
-import React from 'react';
-import DropdownMenu, { DropdownItemGroup, DropdownItem } from '@atlaskit/dropdown-menu';
+import React from 'react'
+import Link from 'next/link'
+import Layout from '../components/layout'
+import Header from '../components/header'
 
-export default () => (
-  <div style={{ margin: '20px' }}>
-    <DropdownMenu
-      trigger="Choices"
-      triggerType="button"
-      onOpenChange={e => console.log('dropdown opened', e)}
-    >
-      <DropdownItemGroup>
-        <DropdownItem>Sydney</DropdownItem>
-        <DropdownItem>Melbourne</DropdownItem>
-      </DropdownItemGroup>
-    </DropdownMenu>
-  </div>
-);
+export default class App extends React.Component {
+    render() {
+        return (
+            <Layout>
+                <Header/>
+                <ul>
+                    <li>
+                        <Link href={`/`}>
+                            <a>Home</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href={`/about`}>
+                            <a>About</a>
+                        </Link>
+                    </li>
+                </ul>
+            </Layout>
+        )
+    }
+}
