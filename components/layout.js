@@ -10,27 +10,32 @@ const Layout = props => {
         }}>
             {props.children}
             <style global jsx>{`
-                h1,
-                a {
-                font-family: 'Times';
+                body {
+                    margin: 0;
+                    color: #00263c
+                }
+
+                h1, a {
+                    font-family: 'Arial', 'Times';
                 }
 
                 ul {
-                padding: 0;
+                    padding: 0;
                 }
 
                 li {
-                list-style: none;
-                margin: 5px 0;
+                    list-style: none;
+                    margin: 5px 0;
                 }
 
                 a {
-                text-decoration: none;
-                color: blue;
+                    transition: all ease-in .2s;
+                    text-decoration: none;
+                    color: #4285f4;
                 }
 
                 a:hover {
-                opacity: 0.6;
+                    opacity: 0.6;
                 }
             `}</style>
         </div>
