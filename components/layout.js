@@ -1,38 +1,25 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
+import Header from './header'
+import Footer from './footer'
 
 const Layout = props => {
     return (
         <div css={{
-            margin: `0 auto`,
+            display: `flex`,
+            flexDirection: `column`,
+            margin: '0 auto',
             maxWidth: 960,
+            minHeight: '100vh',
             padding: 10,
         }}>
-            {props.children}
-            <style global jsx>{`
-                h1,
-                a {
-                font-family: 'Times';
-                }
-
-                ul {
-                padding: 0;
-                }
-
-                li {
-                list-style: none;
-                margin: 5px 0;
-                }
-
-                a {
-                text-decoration: none;
-                color: blue;
-                }
-
-                a:hover {
-                opacity: 0.6;
-                }
-            `}</style>
+            <Header />
+            <div css={{
+                flexGrow: 1
+            }}>
+                {props.children}
+            </div>
+            <Footer />
         </div>
     )
 }

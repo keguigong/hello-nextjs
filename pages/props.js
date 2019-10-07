@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
-import Header from '../components/header'
 
 export default class Father extends React.Component {
     constructor(props) {
@@ -17,7 +16,6 @@ export default class Father extends React.Component {
         const { count, count_child} = this.state
         return (
             <Layout>
-                <Header/>
                 <h1>Father</h1>
                 <h1>Self: {count}</h1>
                 <h1>Child: {count_child}</h1>
