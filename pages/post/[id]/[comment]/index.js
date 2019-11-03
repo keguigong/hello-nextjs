@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import Header from '../../../../components/header'
 import Layout from '../../../../components/layout'
 
 const Comment = () => {
@@ -9,7 +8,6 @@ const Comment = () => {
 
     return (
         <Layout>
-            <Header />
             <h1>/{id}/{comment}</h1>
             <ul>
                 <li>
