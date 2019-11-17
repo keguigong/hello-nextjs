@@ -14,11 +14,11 @@ class Header extends React.Component {
 
     componentDidMount() {
         console.log(window.scrollY)
-        window.addEventListener('scroll', this.handleWindowScroll)
+        // window.addEventListener('scroll', this.handleWindowScroll)
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleWindowScroll)
+        // window.removeEventListener('scroll', this.handleWindowScroll)
     }
 
     handleWindowScroll = (event) => {
@@ -35,29 +35,39 @@ class Header extends React.Component {
     render() {
         return (
             <header css={{
-                position: `sticky`,
+                // position: `sticky`,
                 top: this.state.isHidden ? -100 : 0,
                 transition: 'all ease-in .3s',
             }}>
                 <ul>
                     <li>
                         <Link href='/'>
-                            <a>home</a>
+                            <a>Home</a>
                         </Link>
                     </li>
                     <li>
                         <Link href='/post/[id]' as='/post/post-1'>
-                            <a>post-1</a>
+                            <a>Post-1</a>
                         </Link>
                     </li>
                     <li>
                         <Link href='/post/[id]' as='/post/post-2'>
-                            <a>post-2</a>
+                            <a>Post-2</a>
                         </Link>
                     </li>
                     <li>
-                        <Link href='/scroll'>
-                            <a>scroll</a>
+                        <Link href='/ws'>
+                            <a>Websocket</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href='/props'>
+                            <a>Props</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href='/request'>
+                            <a>Request</a>
                         </Link>
                     </li>
                 </ul>
@@ -65,7 +75,7 @@ class Header extends React.Component {
                     ul {
                         display: flex;
                     }
-
+                    
                     li {
                         margin-right: 10px
                     }

@@ -1,29 +1,29 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch'
+import Layout from '../components/layout'
 
 export default class CorsTest extends React.Component {
     constructor(props){
         super(props)
+        this.url = 'https://api.tvmaze.com/search/shows?q=batman'
     }
 
     render() {
         return (
-            <div>
-                <h1>Cross Origin</h1>
+            <Layout>
+                <h1>Cross Origin Request</h1>
                 <button onClick={this.makeFetchRequest}>makeFetchRequest</button>
                 <button onClick={this.makeXMLRequest}>makeXMLRequest</button>
-            </div>
+            </Layout>
         )
     }
 
     makeFetchRequest = () => {
-        fetch(`http://127.0.0.1:8000/demoapp`, {
-            method: 'GET',
-            headers: {
-                'My-Heder': '6a9sdnahasw6bnnkout'
-            }
+        fetch(`${this.url}`)
+        .then(res => {
+            console.log('status:', res.status)
+            return res.json()
         })
-        .then(res => res.json())
         .then(result => {
             console.log(result)
         })
@@ -32,7 +32,9 @@ export default class CorsTest extends React.Component {
 
     makeXMLRequest = () => {
         let request = new XMLHttpRequest()
-        request.open('GET', 'http://127.0.0.1:8000/demoapp', true)
+        request.onload = (e) => console.log('status:', request.status, JSON.parse(request.response))
+        request.onerror = (e) => console.log(e)
+        request.open('GET', `${this.url}`, true)
         request.send()
     }
 }

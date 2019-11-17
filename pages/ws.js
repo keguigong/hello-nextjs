@@ -1,30 +1,26 @@
 import React from 'react'
-
-const WebSocket = require('isomorphic-ws')
-
-// var ws = new WebSocket("ws://192.168.1.186:1234");
-// var wsOpened = false
+import WebSocket from 'isomorphic-ws'
+import Layout from '../components/layout'
 
 export default class Client extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             isOpen: false,
-            data: []
+            data: null
         }
-        this.serverWire = "192.168.1.201"
-        this.serverWifi = "192.168.43.1"
-        this.ws = new WebSocket(`ws://127.0.0.1:8080`)
-        this.sendData = this.sendData.bind(this)
     }
 
     componentDidMount() {
+        this.ws = new WebSocket('ws://127.0.0.1:8080')
         this.ws.onopen = () => {
             this.setState({
                 isOpen: true
             })
-            console.log("Connected")
+            console.log('Connected')
         }
+
+        this.ws.onerror = (error) => console.log(error)
 
         this.ws.onmessage = (message) => {
             console.log(message.data);
@@ -34,21 +30,21 @@ export default class Client extends React.Component {
         }
     }
 
-    sendData() {
+    sendData = () => {
         if (this.state.isOpen) {
-            this.ws.send(JSON.stringify({ type: 'greet', payload: 'Hello Mr. Server!' }))
-            console.log(`client send a message`)
+            this.ws.send(JSON.stringify({ type: 'greet', payload: 'Hello Server!' }))
+            console.log('MSG SENT')
         } else {
-            console.log("Websocket has not opened!")
+            console.log('WS NOT OPENED')
         }
     }
 
     render() {
         return (
-            <div>
-                <h1>hey!</h1>
-                <button onClick={() => {this.sendData()}}>sendData</button>
-            </div>
+            <Layout>
+                <h1>Websocket Client</h1>
+                <button onClick={() => { this.sendData() }}>sendData</button>
+            </Layout>
         )
     }
 }

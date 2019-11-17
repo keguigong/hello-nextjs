@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -13,19 +15,21 @@ export default class Father extends React.Component {
     }
 
     render() {
-        const { count, count_child} = this.state
+        const { count, count_child } = this.state
         return (
             <Layout>
-                <h1>Father</h1>
-                <h1>Self: {count}</h1>
-                <h1>Child: {count_child}</h1>
-                <button onClick={this.handleMinusClick}>-</button>
-                <button onClick={this.handlePlusClick}>+</button>
-                <Child
-                    onReset={this.handleChildReset}
-                    number={count}
-                    onChange={this.handleChildChange}
-                />
+                <Wrapper>
+                    <h3>Father</h3>
+                    <p>{`Self: ${count}`}</p>
+                    <p>{`Child: ${count_child}`}</p>
+                    <button onClick={this.handleMinusClick}>-</button>
+                    <button onClick={this.handlePlusClick}>+</button>
+                    <Child
+                        onReset={this.handleChildReset}
+                        number={count}
+                        onChange={this.handleChildChange}
+                    />
+                </Wrapper>
             </Layout>
         )
     }
@@ -58,14 +62,14 @@ class Child extends React.Component {
     render() {
         const { count } = this.state
         return (
-            <div>
-                <h1>Child</h1>
-                <h1>Self: {count}</h1>
-                <h1>Father: {this.props.number}</h1>
+            <Wrapper>
+                <h3>Child</h3>
+                <p>{`Self: ${count}`}</p>
+                <p>{`Father: ${this.props.number}`}</p>
                 <button onClick={this.handleMinusClick}>-</button>
                 <button onClick={this.handlePlusClick}>+</button>
                 <button onClick={this.handleResetClick}>RESET Father</button>
-            </div>
+            </Wrapper>
         )
     }
 
@@ -96,3 +100,14 @@ Child.propTypes = {
     onReset: PropTypes.func,
     number: PropTypes.number
 }
+
+const Wrapper = props => (
+    <div css={{
+        border: `0.5px solid #cfcfcf`,
+        borderRadius: 5,
+        margin: 10,
+        padding: 20
+    }}>
+        {props.children}
+    </div>
+)

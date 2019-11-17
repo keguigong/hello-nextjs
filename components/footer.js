@@ -4,13 +4,13 @@ const Footer = () => (
     <footer>
         <ul>
             <li>
-                <Link href='/'>
-                    <a>about</a>
+                <Link href='/about'>
+                    <a>About</a>
                 </Link>
             </li>
             <li>
-                <Link href='/'>
-                    <a>learn more</a>
+                <Link href='/learn-more'>
+                    <a>Learn more</a>
                 </Link>
             </li>
         </ul>

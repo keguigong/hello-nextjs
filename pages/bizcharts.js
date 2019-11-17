@@ -1,24 +1,33 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
-
-// const DataSet = require('@antv/data-set');
-// let bizcharts;
-// let Slider;
-// if (process.browser) {
-//     bizcharts = require('bizcharts');
-//     Slider = require('bizcharts-plugin-slider');
-// }
-
-const Slider = dynamic(() => import('bizcharts-plugin-slider'), { ssr: false })
-const DataSet = dynamic(() => import('@antv/data-set'), { ssr: false })
-const {
-    G2,
+import {
     Chart,
     Geom,
     Axis,
     Tooltip,
-    Legend,
-} = dynamic(() => import('bizcharts'), { ssr: false })
+    Legend
+  } from "bizcharts";
+  import DataSet from "@antv/data-set";
+  import Slider from "bizcharts-plugin-slider";
+
+// let DataSet
+// let bizcharts
+// let Slider
+// if (process.browser) {
+//     bizcharts = require('bizcharts');
+//     Slider = require('bizcharts-plugin-slider');
+//     DataSet = require('@antv/data-set');
+// }
+
+// const Slider = dynamic(() => import('bizcharts-plugin-slider'), { ssr: false })
+// const DataSet = dynamic(() => import('@antv/data-set'), { ssr: false })
+// const {
+//     Chart,
+//     Geom,
+//     Axis,
+//     Tooltip,
+//     Legend,
+// } = dynamic(() => import('bizcharts'), { ssr: false })
 
 import data from '../static/json/mock.json'
 

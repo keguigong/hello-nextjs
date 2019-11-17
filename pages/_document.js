@@ -31,10 +31,11 @@ export default MyDocument
 
 const globalStyle = {
     '*': {
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        fontFamily: '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif'
     },
     'h1, a': {
-        fontFamily: 'Times'
+        // fontFamily: 'Times'
     },
     'ul': {
         padding: 0
@@ -45,7 +46,8 @@ const globalStyle = {
     },
     'a': {
         textDecoration: 'none',
-        color: 'blue',
+        color: '#5864FF',
+        transition: 'opacity ease-in .2s'
     },
     'a:hover': {
         opacity: 0.6,
