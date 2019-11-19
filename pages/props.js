@@ -26,7 +26,7 @@ export default class Father extends React.Component {
                     <button onClick={this.handlePlusClick}>+</button>
                     <Child
                         onReset={this.handleChildReset}
-                        number={count}
+                        count_father={count}
                         onChange={this.handleChildChange}
                     />
                 </Wrapper>
@@ -55,17 +55,25 @@ class Child extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            count: 0
+            count: 0,
+            count_father: props.count_father ? props.count_father : 0
+        }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        const { count_father } = props
+        return{
+            count_father
         }
     }
 
     render() {
-        const { count } = this.state
+        const { count, count_father } = this.state
         return (
             <Wrapper>
                 <h3>Child</h3>
                 <p>{`Self: ${count}`}</p>
-                <p>{`Father: ${this.props.number}`}</p>
+                <p>{`Father: ${count_father}`}</p>
                 <button onClick={this.handleMinusClick}>-</button>
                 <button onClick={this.handlePlusClick}>+</button>
                 <button onClick={this.handleResetClick}>RESET Father</button>
