@@ -10,23 +10,29 @@ export default class Father extends React.Component {
         super(props)
         this.state = {
             count: 0,
-            count_child: 0
+            countSelf: 0,
+            countChild: 0
         }
     }
 
     render() {
-        const { count, count_child } = this.state
+        const { count, countSelf, countChild } = this.state
+        console.log('father: render()')
         return (
             <Layout>
                 <Wrapper>
                     <h3>Father</h3>
-                    <p>{`Self: ${count}`}</p>
-                    <p>{`Child: ${count_child}`}</p>
+                    <p>{`count: ${count}`}</p>
+                    <p>{`countSelf: ${countSelf}`}</p>
+                    <p>{`countChild: ${countChild}`}</p>
+                    <span>count: </span>
                     <button onClick={this.handleMinusClick}>-</button>
                     <button onClick={this.handlePlusClick}>+</button>
+                    <span>countSelf: </span>
+                    <button onClick={this.handleCountSelfPlusClick}>+</button>
                     <Child
                         onReset={this.handleChildReset}
-                        count_father={count}
+                        countFather={count}
                         onChange={this.handleChildChange}
                     />
                 </Wrapper>
@@ -42,12 +48,16 @@ export default class Father extends React.Component {
         this.setState(currentState => ({ count: currentState.count + 1 }))
     }
 
+    handleCountSelfPlusClick = () => {
+        this.setState(currentState => ({ countSelf: currentState.countSelf + 1 }))
+    }
+
     handleChildReset = () => {
         this.setState({ count: 0 })
     }
 
     handleChildChange = (count) => {
-        this.setState({ count_child: count })
+        this.setState({ countChild: count })
     }
 }
 
@@ -56,24 +66,26 @@ class Child extends React.Component {
         super(props)
         this.state = {
             count: 0,
-            count_father: props.count_father ? props.count_father : 0
+            countFather: props.countFather ? props.countFather : 0
         }
     }
 
     static getDerivedStateFromProps(props, state) {
-        const { count_father } = props
+        console.log('child: getDerivedStateFromProps()')
+        const { countFather } = props
         return{
-            count_father
+            countFather
         }
     }
 
     render() {
-        const { count, count_father } = this.state
+        const { count, countFather } = this.state
+        console.log('child: render()')
         return (
             <Wrapper>
                 <h3>Child</h3>
-                <p>{`Self: ${count}`}</p>
-                <p>{`Father: ${count_father}`}</p>
+                <p>{`count: ${count}`}</p>
+                <p>{`countFather: ${countFather}`}</p>
                 <button onClick={this.handleMinusClick}>-</button>
                 <button onClick={this.handlePlusClick}>+</button>
                 <button onClick={this.handleResetClick}>RESET Father</button>
