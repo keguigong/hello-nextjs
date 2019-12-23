@@ -1,6 +1,5 @@
 import React from 'react'
 import WebSocket from 'isomorphic-ws'
-import Layout from '../components/layout'
 
 export default class Client extends React.Component {
     constructor(props) {
@@ -41,10 +40,10 @@ export default class Client extends React.Component {
 
     render() {
         return (
-            <Layout>
+            <React.Fragment>
                 <h1>Websocket Client</h1>
                 <button onClick={() => { this.sendData() }}>sendData</button>
-            </Layout>
+            </React.Fragment>
         )
     }
 }

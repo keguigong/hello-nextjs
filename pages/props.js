@@ -3,8 +3,6 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Layout from '../components/layout'
-
 export default class Father extends React.Component {
     constructor(props) {
         super(props)
@@ -19,24 +17,22 @@ export default class Father extends React.Component {
         const { count, countSelf, countChild } = this.state
         console.log('father: render()')
         return (
-            <Layout>
-                <Wrapper>
-                    <h3>Father</h3>
-                    <p>{`count: ${count}`}</p>
-                    <p>{`countSelf: ${countSelf}`}</p>
-                    <p>{`countChild: ${countChild}`}</p>
-                    <span>count: </span>
-                    <button onClick={this.handleMinusClick}>-</button>
-                    <button onClick={this.handlePlusClick}>+</button>
-                    <span>countSelf: </span>
-                    <button onClick={this.handleCountSelfPlusClick}>+</button>
-                    <Child
-                        onReset={this.handleChildReset}
-                        countFather={count}
-                        onChange={this.handleChildChange}
-                    />
-                </Wrapper>
-            </Layout>
+            <Wrapper>
+                <h3>Father</h3>
+                <p>{`count: ${count}`}</p>
+                <p>{`countSelf: ${countSelf}`}</p>
+                <p>{`countChild: ${countChild}`}</p>
+                <span>count: </span>
+                <button onClick={this.handleMinusClick}>-</button>
+                <button onClick={this.handlePlusClick}>+</button>
+                <span>countSelf: </span>
+                <button onClick={this.handleCountSelfPlusClick}>+</button>
+                <Child
+                    onReset={this.handleChildReset}
+                    countFather={count}
+                    onChange={this.handleChildChange}
+                />
+            </Wrapper>
         )
     }
 
@@ -73,7 +69,7 @@ class Child extends React.Component {
     static getDerivedStateFromProps(props, state) {
         console.log('child: getDerivedStateFromProps()')
         const { countFather } = props
-        return{
+        return {
             countFather
         }
     }
