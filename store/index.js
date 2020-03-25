@@ -11,7 +11,6 @@ import rootReducer from './root-reducer'
 //   return result
 // }
 
-
 //Redux middlewares
 const dev = process.env.NODE_ENV !== 'production'
 const middlewares = dev ?
