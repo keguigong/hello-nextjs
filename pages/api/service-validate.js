@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getSSOTicketValidate, getSSOService } from '../../common/urls'
+import { ssoValidateURL, serviceURL } from '../../common/urls'
 
 export default async (req, res) => {
   const {
@@ -8,11 +8,11 @@ export default async (req, res) => {
 
   var data
 
-  await axios.get(getSSOTicketValidate + '?ticket=' + ticket + '&service=' + getSSOService)
+  await axios.get(ssoValidateURL + '?ticket=' + ticket + '&service=' + serviceURL)
     .then(res => {
       console.log(res.data)
       data = res.data
     })
   res.statusCode = 200
-  res.end(data)
+  res.send(data)
 }

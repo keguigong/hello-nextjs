@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { getSSOService, getSSODomain } from '../common/urls'
+import { serviceURL, ssoURL } from '../common/urls'
 
 const Home = () => {
   return (<div className="container">
@@ -19,7 +19,7 @@ const Home = () => {
       </p>
 
       {/*  */}
-      <a className="card" href={getSSODomain + '?service=' + getSSOService}>登入</a>
+      <a className="card" href={ssoURL + '?service=' + serviceURL}>登入</a>
       {/*  */}
 
       <div className="grid">

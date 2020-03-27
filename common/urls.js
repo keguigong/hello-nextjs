@@ -2,18 +2,22 @@ import {
   welkinDomain,
   SSODomain,
   udsDomain,
+  welkinapisDomain,
   getEnvDomain
 } from './domains'
 
 const env = 'dev'
-const getAresTokenParam = getEnvDomain(udsDomain, env) + '/uds/api/ares/v1/jwts'
-const getSSOService = getEnvDomain(welkinDomain, env) + '/sso/login'
-const getSSODomain = getEnvDomain(SSODomain, env)
-const getSSOTicketValidate = getEnvDomain(SSODomain, env) + '/latest/serviceValidate'
+
+const tokenURL = getEnvDomain(udsDomain, env) + '/uds/ss/ares/v1/jwts'
+const serviceURL = getEnvDomain(welkinDomain, env) + '/sso/login'
+const ssoURL = getEnvDomain(SSODomain, env)
+const ssoValidateURL = getEnvDomain(SSODomain, env) + '/latest/serviceValidate'
+const welkinTokenURL = getEnvDomain(welkinapisDomain, env) + '/getToken'
 
 export {
-  getAresTokenParam,
-  getSSOService,
-  getSSODomain,
-  getSSOTicketValidate
+  tokenURL,
+  serviceURL,
+  ssoURL,
+  ssoValidateURL,
+  welkinTokenURL
 }

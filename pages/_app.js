@@ -3,9 +3,13 @@ import App from 'next/app'
 import { jsx, ThemeProvider } from 'theme-ui'
 import { Provider as ReduxProvider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
+import { loadProgressBar } from 'axios-progress-bar'
+import 'axios-progress-bar/dist/nprogress.css'
 
 import theme from '../styles/theme'
 import { makeStore } from '../store'
+
+loadProgressBar()
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
