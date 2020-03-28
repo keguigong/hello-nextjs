@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import React, { useEffect, useState } from 'react'
-import { withRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import axios from 'axios'
 import xml2js from 'xml2js'
 import JSONPretty from 'react-json-pretty'
@@ -12,9 +12,9 @@ let appId = '100278'
 let secret = '481ed4c430584Eb5541908320EbA5E3d'
 
 const SSOLogin = ({
-  router,
   ...rest
 }) => {
+  const router = useRouter()
   const { ticket } = router.query
   const [profile, setProfile] = useState({})
 
@@ -93,4 +93,4 @@ const SSOLogin = ({
   </React.Fragment>
 }
 
-export default withRouter(SSOLogin)
+export default SSOLogin

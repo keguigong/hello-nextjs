@@ -6,5 +6,6 @@ const withMDX = require('@next/mdx')({
 })
 
 module.exports = withMDX(withLess(withCSS({
+  // useFileSystemPublicRoutes: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx']
 })))
