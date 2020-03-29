@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import { serviceURL, ssoURL } from '../common/urls'
 
 const Home = () => {
   return (<div className="container">
@@ -17,10 +16,6 @@ const Home = () => {
       <p className="description">
         Get started by editing <code>pages/index.js</code>
       </p>
-
-      {/*  */}
-      <a className="card" href={ssoURL + '?service=' + serviceURL}>登入</a>
-      {/*  */}
 
       <div className="grid">
         <a href="https://nextjs.org/docs" className="card">
