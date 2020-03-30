@@ -8,6 +8,7 @@ import JSONPretty from 'react-json-pretty'
 
 import { ssoURL, serviceURL, ssoValidateURL, welkinTokenURL } from '../../common/urls'
 
+axios.defaults.withCredentials = true
 let appId = '100278'
 let secret = '481ed4c430584Eb5541908320EbA5E3d'
 
@@ -61,31 +62,40 @@ const SSOLogin = ({
   //   }
   // }, [ticket])
 
+  // useEffect(() => {
+  //   if (ticket) {
+  //     axios.get(welkinTokenURL, {
+  //       params: {
+  //         ticket,
+  //         appId
+  //       },
+  //       onDownloadProgress: e => {
+  //         let percentage = e.loaded / e.total
+  //         console.log(e.lengthComputable, percentage)
+  //       }
+  //     })
+  //       .then(res => res.data)
+  //       .then(res => setProfile(res))
+  //       .catch(error => setProfile(error))
+  //   } else {
+  //     window.location.href = `${ssoURL + '?service=' + serviceURL}`
+  //   }
+  // }, [ticket])
+
   useEffect(() => {
-    if (ticket) {
-      axios.get(welkinTokenURL, {
-        params: {
-          ticket,
-          appId
-        },
-        onDownloadProgress: e => {
-          let percentage = e.loaded / e.total
-          console.log(e.lengthComputable, percentage)
-        }
-      })
-        .then(res => res.data)
-        .then(res => setProfile(res))
-        .catch(error => setProfile(error))
-    } else {
-      window.location.href = `${ssoURL + '?service=' + serviceURL}`
-    }
+    axios.get('/account/verify', {
+      params: {
+        ticket
+      }
+    })
+      .then(res => res.data)
+      .then(res => setProfile(res))
+      .catch(error => setProfile(error))
   }, [ticket])
 
   return <React.Fragment>
     <div className='card'>
-      <JSONPretty sx={{
-        overflow: 'auto'
-      }} data={profile} />
+      <JSONPretty sx={{ overflow: 'auto' }} data={profile} />
     </div>
     <div className='grid'>
       <a className='card' href={ssoURL + '/logout?service=' + serviceURL}>登出</a>
