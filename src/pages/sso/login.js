@@ -5,11 +5,7 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import JSONPretty from 'react-json-pretty'
 
-let appId = '100278'
-let service = 'http://welkin-dev.nioint.com/sso/login'
-let sso = 'https://login-dev.nio.com'
-
-export { appId, service, sso }
+import { domains, appId } from '../../common/domains'
 
 const SSOLogin = () => {
   const router = useRouter()
@@ -22,7 +18,7 @@ const SSOLogin = () => {
         params: {
           ticket,
           appId,
-          service
+          service: domains.service
         }
       })
         .then(res => res.data)
@@ -36,7 +32,7 @@ const SSOLogin = () => {
       .then(res => res.data)
       .then(res => {
         if (res.statusCode === 200) {
-          window.location.href = sso + '/logout?service=' + service
+          window.location.href = domains.sso + '/logout'
         }
       })
   }
