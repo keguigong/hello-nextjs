@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import App from 'next/app'
-import { jsx, ThemeProvider } from 'theme-ui'
+import { jsx, ThemeProvider, Styled } from 'theme-ui'
 import { Provider as ReduxProvider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import axios from 'axios'
@@ -23,9 +23,24 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props
 
     return <ThemeProvider theme={theme}>
-      <ReduxProvider store={store}>
-        <Component {...pageProps} />
-      </ReduxProvider>
+      <Styled.root>
+        <ReduxProvider store={store}>
+          <Component {...pageProps} />
+        </ReduxProvider>
+      </Styled.root>
+      <style jsx global>{`
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    `}</style>
     </ThemeProvider>
   }
 }
