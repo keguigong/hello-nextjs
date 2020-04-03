@@ -3,32 +3,26 @@ import Head from 'next/head'
 import axios from 'axios'
 import JSONPretty from 'react-json-pretty'
 
-import { domains } from '../common/domains'
+import { urlManager } from '../components/common'
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState({})
 
-  const handleLogout = () => {
-    axios.get('/account/logout')
-      .then(res => res.data)
-      .then(res => {
-        // window.location.href = domains.sso + '/logout?service=' + domains.service
-      })
-      .catch(e => e)
-  }
-
-  const handleLogin = () => {
-    window.location.href = domains.ssoLogin
-  }
-
   useEffect(() => {
     if (Object.keys(userInfo).length === 0) {
-      axios.get('/account/resources')
+      axios.get('/sso/current')
         .then(res => res.data)
         .then(res => setUserInfo(res))
         .catch(e => e)
     }
   }, [])
+
+  const handleLogout = () => {
+    axios.get('/sso/logout')
+      .then(res => res.data)
+      .then(res => window.location.href = urlManager.getSSOLogoutUrl())
+      .catch(e => e)
+  }
 
   return (
     <div className="container">
@@ -45,7 +39,6 @@ const Home = () => {
           Get started by editing <code>pages/index.js</code>
         </p>
         <div className='grid'>
-          <button className='card' onClick={handleLogin}>Log in</button>
           <button className='card' onClick={handleLogout}>Log out</button>
         </div>
         <JSONPretty sx={{ overflow: 'auto' }} data={userInfo} />

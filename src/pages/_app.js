@@ -7,9 +7,15 @@ import axios from 'axios'
 
 import theme from '../styles/theme'
 import { makeStore } from '../store'
+import { withAuthCheck } from '../components/auth/with-auth-check'
 
 //auto read cookie when axios request
 axios.defaults.withCredentials = true
+
+const Tag = ({ Component, ...pageProps}) => {
+  const WithAuthCheck = withAuthCheck(Component)
+  return <WithAuthCheck {...pageProps} />
+}
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -25,7 +31,7 @@ class MyApp extends App {
     return <ThemeProvider theme={theme}>
       <Styled.root>
         <ReduxProvider store={store}>
-          <Component {...pageProps} />
+          <Tag { ... { Component, ...pageProps}} />
         </ReduxProvider>
       </Styled.root>
       <style jsx global>{`
