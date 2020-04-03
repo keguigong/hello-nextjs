@@ -1,10 +1,6 @@
 const axios = require('axios')
 
-class AuthManager {
-  constructor() {
-
-  }
-
+class AuthService {ååœ
   checkLoginMiddleware(req, res, next) {
     axios.get('/sso/sessions')
       .then(result => result.data)
@@ -15,4 +11,4 @@ class AuthManager {
   }
 }
 
-module.exports = { AuthManager }
+module.exports = { AuthService }

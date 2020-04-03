@@ -15,7 +15,7 @@ app
 
     server.use((req, res, next) => {
       console.log('req => ', req.originalUrl)
-      console.log(JSON.stringify(req.signedCookies))
+      // console.log(JSON.stringify(req.signedCookies))
       next()
     })
 

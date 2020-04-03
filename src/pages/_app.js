@@ -7,7 +7,7 @@ import axios from 'axios'
 
 import theme from '../styles/theme'
 import { makeStore } from '../store'
-import { withAuthCheck } from '../components/auth/with-auth-check'
+import { withAuthCheck } from '../utils'
 
 //auto read cookie when axios request
 axios.defaults.withCredentials = true

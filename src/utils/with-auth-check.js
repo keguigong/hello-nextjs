@@ -4,7 +4,7 @@ import { Flex, Spinner } from '@theme-ui/components'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import { urlManager } from '../common'
+import { urlManager } from '.'
 
 const withAuthCheck = (ComposedComponent) => {
   const AuthCheck = ({ ...rest }) => {

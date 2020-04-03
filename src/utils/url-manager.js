@@ -4,7 +4,9 @@ const URLMANAGER_DEFAULT_OPTIONS = {
   'portalBaseUrl': 'http://welkin${env}.nioint.com',
   'ssoBaseUrl': 'https://login${env}.nio.com',
   'udsBaseUrl': 'http://uds${env}-int.nioapis.com',
-  'aresBaseUrl': 'http://ares${env}.nioint.com'
+  'aresBaseUrl': 'http://ares${env}.nioint.com',
+  'aresThemeColor': '5864FF',
+  'aresIsEmbed': true
 }
 
 class UrlManager {
@@ -21,6 +23,10 @@ class UrlManager {
   getSSOLoginUrl = () => `${this.getSSOBaseUrl()}/login?service=${this.getServiceUrl()}&lang=zh_cn`
   getSSOLogoutUrl = () => `${this.getSSOBaseUrl()}/logout?service=${this.getServiceUrl()}&lang=zh_cn`
   getAresBaseUrl = () => this.getEnvDomain(this.options.aresBaseUrl)
+  getAresEmbedUrl = (path) => {
+    const { aresThemeColor, aresIsEmbed, appId } = this.options
+    return `${this.getAresBaseUrl()}/?app_id=${appId}&is_embed=${aresIsEmbed}#${path}`
+  }
   getUdsBaseUrl = () => this.getEnvDomain(this.options.udsBaseUrl)
 }
 

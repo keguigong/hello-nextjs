@@ -3,14 +3,14 @@ import Head from 'next/head'
 import axios from 'axios'
 import JSONPretty from 'react-json-pretty'
 
-import { urlManager } from '../components/common'
+import { urlManager } from '../utils'
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState({})
 
   useEffect(() => {
     if (Object.keys(userInfo).length === 0) {
-      axios.get('/sso/current')
+      axios.get('/sso/resources')
         .then(res => res.data)
         .then(res => setUserInfo(res))
         .catch(e => e)
