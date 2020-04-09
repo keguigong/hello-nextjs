@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react'
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import axios from 'axios'
 import JSONPretty from 'react-json-pretty'
@@ -7,6 +9,7 @@ import { urlManager } from '../utils'
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState({})
+  const [aresPath, setAresPath] = useState(null)
 
   useEffect(() => {
     if (Object.keys(userInfo).length === 0) {
@@ -41,7 +44,42 @@ const Home = () => {
         <div className='grid'>
           <button className='card' onClick={handleLogout}>Log out</button>
         </div>
-        <JSONPretty sx={{ overflow: 'auto' }} data={userInfo} />
+        {/* <JSONPretty sx={{ overflow: 'auto' }} data={userInfo} /> */}
+        <ul>
+          {typeof userInfo.list !== 'undefined' ?
+            userInfo.list.map((listItem, index) => (
+              <li key={index}>
+                {listItem.name}
+                {typeof listItem.children !== 'undefined' ?
+                  <ul>
+                    {listItem.children.map((childrenItem, index) => (
+                      <li key={index} sx={{ cursor: 'pointer' }}>
+                        {childrenItem.name}
+                        {listItem.id === 2579 ?
+                          <button onClick={() =>{
+                            setAresPath(null)
+                            setTimeout(() => setAresPath(childrenItem.url), 1)
+                          }}>&gt;</button> :
+                          null}
+                      </li>
+                    ))}
+                  </ul> :
+                  null
+                }
+              </li>
+            )) :
+            null
+          }
+        </ul>
+        {aresPath ?
+          <iframe
+            src={urlManager.getAresEmbedUrl(aresPath)}
+            sx={{
+              height: 600,
+              width: '100%',
+              border: 0
+            }} /> :
+          null}
       </main>
 
       <footer>
@@ -65,6 +103,7 @@ const Home = () => {
       }
 
       main {
+        width: 100%;
         padding: 5rem 0;
         flex: 1;
         display: flex;

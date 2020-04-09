@@ -4,7 +4,7 @@ const URLMANAGER_DEFAULT_OPTIONS = {
   'portalBaseUrl': 'http://welkin${env}.nioint.com',
   'ssoBaseUrl': 'https://login${env}.nio.com',
   'udsBaseUrl': 'http://uds${env}-int.nioapis.com',
-  'aresBaseUrl': 'http://ares${env}.nioint.com',
+  'aresBaseUrl': 'https://ares${env}.nioint.com',
   'aresThemeColor': '5864FF',
   'aresIsEmbed': true
 }
