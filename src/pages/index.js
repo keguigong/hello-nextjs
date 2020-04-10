@@ -55,8 +55,8 @@ const Home = () => {
                     {listItem.children.map((childrenItem, index) => (
                       <li key={index} sx={{ cursor: 'pointer' }}>
                         {childrenItem.name}
-                        {listItem.id === 2579 ?
-                          <button onClick={() =>{
+                        {childrenItem.url.match(/^\/admin\/*/) ?
+                          <button onClick={() => {
                             setAresPath(null)
                             setTimeout(() => setAresPath(childrenItem.url), 1)
                           }}>&gt;</button> :

@@ -1,7 +1,7 @@
 const URLMANAGER_DEFAULT_OPTIONS = {
   'appId': '100278',
   'env': 'dev',
-  'portalBaseUrl': 'http://welkin${env}.nioint.com',
+  'portalBaseUrl': 'https://welkin${env}.nioint.com',
   'ssoBaseUrl': 'https://login${env}.nio.com',
   'udsBaseUrl': 'http://uds${env}-int.nioapis.com',
   'aresBaseUrl': 'https://ares${env}.nioint.com',

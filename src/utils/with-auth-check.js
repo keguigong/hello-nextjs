@@ -11,7 +11,7 @@ const withAuthCheck = (ComposedComponent) => {
     const [isLoggedin, setIsLoggedin] = useState(false)
 
     useEffect(() => {
-      axios.get('/api/sessions')
+      axios.get('/sso/check')
         .then(res => res.data)
         .then(res => {
           setIsLoggedin(true)
